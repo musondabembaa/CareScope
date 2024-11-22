@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+service DiseasePredictionService {
+    rpc PredictOutbreak (OutbreakRequest) returns (OutbreakResponse);
+}
+
+message OutbreakRequest {
+    string location = 1;
+    string date_range = 2;
+}
+
+message OutbreakResponse {
+    string location = 1;
+    string prediction = 2;
+    string confidence = 3;
+    string recommendations = 4;
+}
