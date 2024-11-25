@@ -1,0 +1,26 @@
+orgs_list = snet_sdk.get_organization_list()
+print(*orgs_list, sep="\n")
+# ...
+# GoogleOrg3
+# Phoetrek
+# ...
+
+org_id = "Phoetrek"
+services_list = snet_sdk.get_services_list(org_id=org_id)
+print(*services_list, sep="\n")
+# risk aware assessment
+
+service_client = snet_sdk.create_service_client(org_id="Phoetrek",
+                                                service_id="risk aware assessment",
+                                                group_name="default_group")
+                                                result = service_client.call_rpc("add", "Numbers", a=5, b=10)
+print(f"Performing 5 + 10: {result}")  # Expected output: value: 15.0
+while True:
+    expr = input("Enter an expression (e.g., 3 * 4 or 'exit' to quit): ")
+    if expr.lower() == "exit":
+        break
+    a, op, b = expr.split()
+    result = service_client.call_rpc(op_map[op], "Numbers", a=float(a), b=float(b))
+    print(f"Result: {result}")
+
+

@@ -1,0 +1,8 @@
+from snet import sdk
+
+config = sdk.config.Config(private_key="YOUR_PRIVATE_KEY",
+                               eth_rpc_endpoint=f"https://sepolia.infura.io/v3/YOUR_INFURA_KEY",
+                               concurrency=False,
+                               force_update=False)
+
+snet_sdk = sdk.SnetSDK(config)
